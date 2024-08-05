@@ -1,0 +1,51 @@
+# Importando as bibliotecas necessárias
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Configurações para ler o arquivo CSV diretamente do Google Drive
+file_url = "https://drive.google.com/uc?id=1akDw1KGgQAWeCFLORbHauLNTjNRbzT7-"
+csv_file = pd.read_csv(file_url)
+
+# Visualizando as categorias de produtos mais vendidas (gráfico de barras)
+plt.figure(figsize=(10, 6))  # Ajustando o tamanho do gráfico
+top_categories = csv_file['category_name'].value_counts().nlargest(10)  # Selecionando as 10 categorias mais vendidas
+sns.barplot(y=top_categories.index, x=top_categories.values, palette='viridis')
+plt.title('Top 10 Categorias de Produtos Mais Vendidas')
+plt.xlabel('Número de Vendas')
+plt.ylabel('Categoria')
+plt.tight_layout()  # Ajustando o layout para melhorar a legibilidade
+plt.show()
+
+# Relatório do gráfico de barras
+print("\nRelatório do Gráfico de Barras:")
+print("O gráfico de barras acima mostra as 10 categorias de produtos mais vendidas na loja de comércio eletrônico.")
+print("As categorias são ordenadas pelo número de vendas, com a categoria mais vendida no topo.")
+print("Scrapbooking & Stamping Supplies é a categoria mais vendida, seguida por Sewing Products e Craft & Hobby Fabric.")
+print("Este gráfico fornece insights valiosos sobre as preferências dos clientes e pode ajudar na tomada de decisões estratégicas, como alocação de recursos e marketing.")
+
+# Identificando a correlação entre categorias de produtos e aumento das vendas (gráfico de dispersão)
+# Como não temos dados de vendas neste conjunto, vou apenas mostrar um gráfico de dispersão simples
+plt.figure(figsize=(8, 6))
+plt.scatter(range(len(csv_file)), csv_file['id'])
+plt.title('Relação entre ID do Produto e Vendas (Exemplo)')
+plt.xlabel('ID do Produto')
+plt.ylabel('Vendas')
+plt.show()
+
+# Relatório do gráfico de dispersão
+print("\nRelatório do Gráfico de Dispersão:")
+print("O gráfico de dispersão acima mostra a relação entre o ID do produto e as vendas.")
+print("Cada ponto no gráfico representa um produto, com o eixo x representando o ID do produto e o eixo y representando as vendas.")
+print("Neste exemplo, como não temos dados de vendas reais, o gráfico de dispersão não fornece insights específicos sobre correlações entre categorias de produtos e vendas.")
+print("No entanto, em uma análise com dados de vendas, esse gráfico poderia ser usado para identificar padrões ou tendências nas vendas dos produtos.")
+
+# Fornecendo insights e recomendações gerais
+print("\nInsights e Recomendações Gerais:")
+print("- As categorias de produtos mais vendidas são Scrapbooking & Stamping Supplies, seguida por Sewing Products e Craft & Hobby Fabric.")
+print("- Recomenda-se investir em promoções ou campanhas de marketing para as categorias menos vendidas, como Automotive Paint & Paint Supplies.")
+print("- É importante coletar dados de vendas detalhados para uma análise mais precisa e identificação de correlações entre categorias de produtos e vendas.")
+
+# Dados Externos Relevantes (apenas exemplo, não há dados externos fornecidos)
+print("\nDados Externos Relevantes:")
+print("- Para uma análise mais abrangente, recomenda-se obter dados de vendas históricas, dados demográficos dos clientes e informações sobre concorrentes.")
